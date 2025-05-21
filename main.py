@@ -13,7 +13,8 @@ app = FastAPI()
 
 @app.post("/add")
 async def add_numbers(x: int, y: int):
-    task = add.delay(x, y)
+    username = "test_user"  # Replace with actual username logic
+    task = add.apply_async((x, y), {"username": username})
     return {"task_id": task.id, "message": "Task queued successfully!"}
 
 
@@ -62,4 +63,7 @@ async def get_result(task_id: str, db: Session = Depends(get_db)):
     # 3) Success
     # propagate=False means .get() won't re-raise if something weird happened
     value = res.get(propagate=False)
-    return {"status": res.state, "result": value}
+    username = value.get("username", None) if isinstance(value, dict) else None
+    result = value.get("result", None) if isinstance(value, dict) else value
+
+    return {"status": res.state, "result": result, "task_id": task_id, "username": username}
