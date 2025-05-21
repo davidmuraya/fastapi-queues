@@ -75,14 +75,14 @@ curl "http://localhost:5000/result/c9b7a8c2-f3c7-4e2d-b3e3-e1e0d1c2b3a4"
 
 ```
 fastapi-queues/
-├── main.py            # FastAPI app and endpoints
-├── config.py    # Environment configuration
-├── tasks.py   # Celery tasks
-├── celery_config.py   # Celery configuration
-├── database/   # Database configuration
-│   ├── connection.py   # Database connection
-│   └── utils/   # Database utilities
-│       └── celery_crud.py   # Celery database utilities
+├── main.py                 # FastAPI app and endpoints
+├── config.py               # Environment configuration
+├── tasks.py                # Celery task definitions
+├── celery_config.py        # Celery configuration
+├── database/               # Database configuration
+│   ├── connection.py       # Database connection
+│   └── utils/              # Database utilities
+│       └── celery_crud.py  # Celery database utilities
 ├── requirements.txt
 └── README.md
 ```
