@@ -1,20 +1,27 @@
-# FastAPI Queues
+# FastAPI Celery + Redis
 
-A FastAPI-based project for managing background task queues with asynchronous workers. This project demonstrates how to integrate queue processing into a FastAPI application, enabling scalable background job execution.
+A production-ready FastAPI project for managing background task queues using Celery and Redis. This project demonstrates how to offload long-running or resource-intensive tasks from your FastAPI API to asynchronous workers, enabling scalable and reliable background job execution. It includes queue management endpoints, example producer/consumer patterns, and a modular structure for easy extension.
+
 
 ## Features
 
-- Asynchronous background task processing
-- Queue management endpoints
-- Integration with popular queue backends (e.g., Redis, in-memory)
-- Example producer/consumer patterns
+- Asynchronous background task processing with Celery
+- FastAPI endpoints to enqueue and monitor tasks
+- Integration with Redis for robust, production-grade queue management
+- Example producer/consumer patterns (e.g., addition, division tasks)
+- Task status and result retrieval via API
+- Modular codebase with clear separation of API, tasks, and configuration
+- Optional in-memory queue support for development/testing
+- Windows and Linux compatibility
 
 ## Requirements
 
 - Python 3.8+
 - FastAPI
 - Uvicorn
-- [Optional] Redis (for production-grade queues)
+- Celery
+- Redis (for production queue backend)
+- SQLModel (for database interactions)
 
 ## Installation
 
@@ -22,6 +29,15 @@ A FastAPI-based project for managing background task queues with asynchronous wo
 git clone https://github.com/davidmuraya/fastapi-queues.git
 cd fastapi-queues
 pip install -r requirements.txt
+```
+
+Ensure you have Redis installed and running on your machine.
+
+Create a `.env` file in the root directory and add the following lines:
+
+```bash
+REDIS_BROKER_URL=redis://localhost:6379/0
+CELERY_DB=database/celery.db
 ```
 
 ## Usage
