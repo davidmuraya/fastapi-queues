@@ -1,4 +1,4 @@
-# FastAPI Celery + Redis
+# FastAPI, Celery + Redis
 
 A production-ready FastAPI project for managing background task queues using Celery and Redis. This project demonstrates how to offload long-running or resource-intensive tasks from your FastAPI API to asynchronous workers, enabling scalable and reliable background job execution. It includes queue management endpoints, example producer/consumer patterns, and a modular structure for easy extension.
 
