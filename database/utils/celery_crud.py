@@ -21,7 +21,7 @@ async def get_task_id(db: Session, task_id: str) -> int:
 
     except DBAPIError as e:
         # log e if you have a logger
-        logging.critical(f"Database error: {e}")
+        logging.critical(f"Database error: {e!r}")
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Database error while fetching task.")
 
     return id
