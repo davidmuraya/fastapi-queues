@@ -19,7 +19,7 @@ def long_call(self, url: str):
         # network problem: retry
         raise self.retry(exc=exc)
     except HTTPStatusError as exc:
-        logging.error(f"HTTP error: {exc}")
+        logging.error(f"Request failed: {exc!r}")
         # bad HTTP status: probably not worth retrying
         raise
 
